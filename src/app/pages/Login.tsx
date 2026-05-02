@@ -75,20 +75,20 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-slate-950 text-slate-50">
+    <div className="min-h-screen overflow-hidden bg-background text-foreground">
       <div className="grid min-h-screen lg:grid-cols-[1.45fr_1fr]">
-        <section className="relative hidden overflow-hidden border-r border-slate-800/80 bg-slate-900/95 p-10 lg:flex lg:flex-col lg:justify-between">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(129,140,248,0.14),transparent_24%)]" />
+        <section className="relative hidden overflow-hidden border-r border-border bg-sidebar p-10 text-sidebar-foreground lg:flex lg:flex-col lg:justify-between">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(13,148,136,0.18),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(129,140,248,0.12),transparent_24%)]" />
           <div className="relative z-10 space-y-10">
-            <div className="flex items-center gap-3 rounded-3xl bg-slate-950/70 px-4 py-3 ring-1 ring-white/10 shadow-sm shadow-slate-950/20">
-              <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-sky-400/10 text-sky-300 ring-1 ring-slate-800">
+            <div className="flex items-center gap-3 rounded-3xl bg-card/80 px-4 py-3 ring-1 ring-border shadow-sm">
+              <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-secondary/10 text-secondary ring-1 ring-border">
                 <Wallet size={22} />
               </div>
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-secondary">
                   SpendSmart
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-muted-foreground">
                   Premium expense intelligence
                 </p>
               </div>
@@ -96,14 +96,14 @@ export function Login() {
 
             <div className="max-w-xl space-y-6">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-secondary">
                   Welcome back
                 </p>
-                <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+                <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-foreground sm:text-5xl">
                   Smart, secure access for your everyday finance flow.
                 </h1>
               </div>
-              <p className="max-w-xl text-base leading-7 text-slate-300/95">
+              <p className="max-w-xl text-base leading-7 text-muted-foreground/95">
                 Sign in quickly with confidence, stay in control of every
                 transaction, and keep your money goals moving forward.
               </p>
@@ -112,14 +112,18 @@ export function Login() {
                 {BENEFITS.map((item) => (
                   <div
                     key={item.title}
-                    className="flex items-start gap-4 rounded-3xl border border-slate-800/80 bg-slate-950/80 p-4"
+                    className="flex items-start gap-4 rounded-3xl border border-border bg-card/80 p-4"
                   >
-                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-800 text-sky-300 ring-1 ring-slate-700">
+                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-muted text-secondary ring-1 ring-border">
                       <item.icon size={18} />
                     </div>
                     <div>
-                      <p className="font-semibold text-white">{item.title}</p>
-                      <p className="mt-1 text-sm text-slate-400">{item.desc}</p>
+                      <p className="font-semibold text-foreground">
+                        {item.title}
+                      </p>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {item.desc}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -127,9 +131,9 @@ export function Login() {
             </div>
           </div>
 
-          <div className="relative z-10 grid gap-4 rounded-[2rem] border border-slate-800/80 bg-slate-950/85 p-6 shadow-2xl shadow-slate-950/20">
-            <div className="flex items-center gap-3 text-slate-200">
-              <Shield size={18} className="text-sky-300" />
+          <div className="relative z-10 grid gap-4 rounded-[2rem] border border-border bg-card/90 p-6 shadow-2xl shadow-black/10">
+            <div className="flex items-center gap-3 text-foreground">
+              <Shield size={18} className="text-secondary" />
               <p className="text-sm leading-6">
                 Bank-grade security and privacy-first protection on every login.
               </p>
@@ -142,12 +146,12 @@ export function Login() {
               ].map((badge) => (
                 <div
                   key={badge.label}
-                  className="rounded-3xl bg-slate-900/80 p-4 text-center ring-1 ring-slate-700/70"
+                  className="rounded-3xl bg-card p-4 text-center ring-1 ring-border"
                 >
-                  <p className="text-xl font-semibold text-white">
+                  <p className="text-xl font-semibold text-foreground">
                     {badge.value}
                   </p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.24em] text-slate-400">
+                  <p className="mt-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
                     {badge.label}
                   </p>
                 </div>
@@ -158,23 +162,23 @@ export function Login() {
 
         <main className="flex items-center justify-center px-6 py-10 sm:px-10 lg:px-12">
           <div className="w-full max-w-2xl">
-            <div className="rounded-[2rem] border border-slate-800/80 bg-slate-950/95 p-8 shadow-2xl shadow-slate-950/30 backdrop-blur-xl sm:p-10">
+            <div className="rounded-[2rem] border border-border bg-card/95 p-8 shadow-2xl shadow-black/20 backdrop-blur-xl sm:p-10">
               <div className="space-y-4">
-                <div className="flex items-center gap-3 text-slate-100">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 ring-1 ring-slate-800">
+                <div className="flex items-center gap-3 text-foreground">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-secondary/10 text-secondary ring-1 ring-border">
                     <Wallet size={24} />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">
+                    <p className="text-sm font-semibold uppercase tracking-[0.28em] text-secondary">
                       Secure login
                     </p>
-                    <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                    <h2 className="mt-2 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
                       Access your SpendSmart workspace.
                     </h2>
                   </div>
                 </div>
 
-                <p className="text-base leading-7 text-slate-300">
+                <p className="text-base leading-7 text-muted-foreground">
                   Enter your details to continue. Your session is protected by
                   encryption and smart authentication.
                 </p>
@@ -182,12 +186,12 @@ export function Login() {
 
               {loginError && (
                 <div
-                  className="mt-8 rounded-3xl border border-rose-500/20 bg-rose-500/10 p-5 text-rose-100"
+                  className="mt-8 rounded-3xl border border-destructive/20 bg-destructive/10 p-5 text-destructive-foreground"
                   role="alert"
                   aria-live="assertive"
                 >
                   <div className="flex items-center gap-3">
-                    <AlertCircle size={18} className="text-rose-300" />
+                    <AlertCircle size={18} className="text-destructive" />
                     <p className="font-semibold">Sign in failed</p>
                   </div>
                   <p className="mt-2 text-sm leading-6">{loginError}</p>
@@ -202,7 +206,7 @@ export function Login() {
                 <div className="space-y-3">
                   <label
                     htmlFor="email"
-                    className="text-sm font-semibold text-slate-200 block"
+                    className="text-sm font-semibold text-foreground block"
                   >
                     Email address
                   </label>
@@ -219,16 +223,16 @@ export function Login() {
                         message: "Enter a valid email address",
                       },
                     })}
-                    className={`w-full rounded-3xl border px-4 py-4 text-slate-50 bg-slate-950/90 outline-none transition-all placeholder:text-slate-500 focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20 ${
+                    className={`w-full rounded-3xl border px-4 py-4 text-input bg-input-background outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 ${
                       errors.email
-                        ? "border-rose-500/50 focus:border-rose-400 focus:ring-rose-500/20"
-                        : "border-slate-800"
+                        ? "border-destructive focus:border-destructive focus:ring-destructive/20"
+                        : "border-border"
                     }`}
                     aria-invalid={errors.email ? "true" : "false"}
                     aria-describedby={errors.email ? "email-error" : undefined}
                   />
                   {errors.email && (
-                    <p id="email-error" className="text-sm text-rose-300">
+                    <p id="email-error" className="text-sm text-destructive">
                       {errors.email.message}
                     </p>
                   )}
@@ -238,13 +242,13 @@ export function Login() {
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor="password"
-                      className="text-sm font-semibold text-slate-200 block"
+                      className="text-sm font-semibold text-foreground block"
                     >
                       Password
                     </label>
                     <button
                       type="button"
-                      className="text-sm font-semibold text-slate-300 hover:text-white"
+                      className="text-sm font-semibold text-secondary hover:text-secondary/80"
                     >
                       Forgot password?
                     </button>
@@ -265,10 +269,10 @@ export function Login() {
                       onKeyUp={(event) =>
                         setCapsLockOn(event.getModifierState("CapsLock"))
                       }
-                      className={`w-full rounded-3xl border px-4 py-4 pr-12 text-slate-50 bg-slate-950/90 outline-none transition-all placeholder:text-slate-500 focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20 ${
+                      className={`w-full rounded-3xl border px-4 py-4 pr-12 text-input bg-input-background outline-none transition-all placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 ${
                         errors.password
-                          ? "border-rose-500/50 focus:border-rose-400 focus:ring-rose-500/20"
-                          : "border-slate-800"
+                          ? "border-destructive focus:border-destructive focus:ring-destructive/20"
+                          : "border-border"
                       }`}
                       aria-invalid={errors.password ? "true" : "false"}
                       aria-describedby={
@@ -282,7 +286,7 @@ export function Login() {
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-100 transition-colors"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
                       aria-label={
                         showPassword ? "Hide password" : "Show password"
                       }
@@ -292,11 +296,14 @@ export function Login() {
                   </div>
                   <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     {errors.password ? (
-                      <p id="password-error" className="text-sm text-rose-300">
+                      <p
+                        id="password-error"
+                        className="text-sm text-destructive"
+                      >
                         {errors.password.message}
                       </p>
                     ) : (
-                      <p className="text-sm text-slate-400">
+                      <p className="text-sm text-muted-foreground">
                         Password must contain at least 6 characters.
                       </p>
                     )}
@@ -312,15 +319,15 @@ export function Login() {
                 </div>
 
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <label className="inline-flex items-center gap-3 text-sm text-slate-200">
+                  <label className="inline-flex items-center gap-3 text-sm text-foreground">
                     <input
                       type="checkbox"
                       {...register("rememberMe")}
-                      className="h-5 w-5 rounded-lg border border-slate-700 bg-slate-950 text-sky-500 focus:ring-sky-400"
+                      className="h-5 w-5 rounded-lg border border-border bg-input-background text-secondary focus:ring-secondary/30"
                     />
                     <span className="font-medium">Remember me for 30 days</span>
                   </label>
-                  <p className="text-sm text-slate-400">
+                  <p className="text-sm text-muted-foreground">
                     Secure session for trusted devices.
                   </p>
                 </div>
@@ -328,11 +335,11 @@ export function Login() {
                 <button
                   type="submit"
                   disabled={isLoading || !isValid}
-                  className="flex w-full items-center justify-center gap-3 rounded-3xl bg-sky-500 px-5 py-4 text-base font-semibold text-white shadow-xl shadow-sky-500/20 transition duration-200 hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-300"
+                  className="flex w-full items-center justify-center gap-3 rounded-3xl bg-primary text-primary-foreground px-5 py-4 text-base font-semibold shadow-xl shadow-primary/20 transition duration-200 hover:bg-primary/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground"
                 >
                   {isLoading ? (
                     <>
-                      <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                      <span className="h-5 w-5 animate-spin rounded-full border-2 border-primary-foreground/40 border-t-primary-foreground" />
                       Signing in...
                     </>
                   ) : (
@@ -344,9 +351,9 @@ export function Login() {
                 </button>
               </form>
 
-              <div className="mt-6 rounded-3xl border border-slate-800/80 bg-slate-900/80 p-5">
-                <div className="flex items-center gap-3 text-slate-300">
-                  <CheckCircle2 size={18} className="text-sky-300" />
+              <div className="mt-6 rounded-3xl border border-border bg-muted p-5">
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <CheckCircle2 size={18} className="text-secondary" />
                   <p className="text-sm leading-6">
                     Prefer to explore first? Continue as a demo and preview the
                     dashboard instantly.
@@ -355,36 +362,36 @@ export function Login() {
                 <button
                   type="button"
                   onClick={() => navigate("/")}
-                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-3xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-slate-500 hover:bg-slate-900"
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-3xl border border-border bg-card px-4 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
                 >
                   Continue as demo
                 </button>
               </div>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-3xl border border-slate-800/80 bg-slate-900/80 p-4">
-                  <p className="text-sm font-semibold text-slate-100">
+                <div className="rounded-3xl border border-border bg-card p-4">
+                  <p className="text-sm font-semibold text-foreground">
                     Secure by default
                   </p>
-                  <p className="mt-2 text-sm text-slate-400 leading-6">
+                  <p className="mt-2 text-sm text-muted-foreground leading-6">
                     Every login is protected by encrypted transport and trusted
                     session controls.
                   </p>
                 </div>
-                <div className="rounded-3xl border border-slate-800/80 bg-slate-900/80 p-4">
-                  <p className="text-sm font-semibold text-slate-100">
+                <div className="rounded-3xl border border-border bg-card p-4">
+                  <p className="text-sm font-semibold text-foreground">
                     Privacy assured
                   </p>
-                  <p className="mt-2 text-sm text-slate-400 leading-6">
+                  <p className="mt-2 text-sm text-muted-foreground leading-6">
                     We never share your credentials and your details stay
                     private in your browser.
                   </p>
                 </div>
               </div>
 
-              <div className="mt-8 border-t border-slate-800/80 pt-5 text-center text-sm text-slate-400">
+              <div className="mt-8 border-t border-border pt-5 text-center text-sm text-muted-foreground">
                 Don&apos;t have an account?{" "}
-                <button className="font-semibold text-slate-100 hover:text-white transition-colors">
+                <button className="font-semibold text-foreground hover:text-primary transition-colors">
                   Create one free
                 </button>
               </div>

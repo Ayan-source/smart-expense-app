@@ -140,16 +140,54 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground antialiased;
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 
   html {
     font-size: var(--font-size);
+    color-scheme: light dark;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    min-height: 100vh;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body,
+  input,
+  textarea,
+  select,
+  button {
+    font-family: inherit;
+  }
+
+  button {
+    font: inherit;
+  }
+
+  a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  a:hover,
+  a:focus-visible {
+    text-decoration: underline;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--ring);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.18);
+  }
+
+  ::selection {
+    background: rgba(13, 148, 136, 0.18);
+    color: var(--foreground);
   }
 
   h1 {
