@@ -3,6 +3,7 @@ You are designing a premium, modern, highly polished web application UI in Figma
 I want the app to look like it could appear on Pinterest, Dribbble, or a polished fintech case study. The design should feel art-directed, modern, balanced, clean, and expensive. Every screen should have a strong visual hierarchy, beautiful spacing, tasteful color usage, and refined composition.
 
 IMPORTANT DESIGN DIRECTION
+
 - The UI should feel premium, calm, trustworthy, and beautifully structured
 - Avoid AI-looking symmetry that feels robotic or repetitive
 - Avoid generic “dashboard card spam”
@@ -14,6 +15,7 @@ IMPORTANT DESIGN DIRECTION
 
 VISUAL STYLE
 Create a modern fintech aesthetic inspired by high-end SaaS dashboards and polished productivity apps:
+
 - clean editorial-style layout
 - generous whitespace
 - strong typography hierarchy
@@ -32,6 +34,7 @@ The app should not look like a typical student project. It should look like a pr
 
 COLOR DIRECTION
 Use a restrained palette such as:
+
 - background: warm off-white or cool light gray
 - primary: deep navy / indigo / slate blue
 - accent: muted teal or blue-green
@@ -45,12 +48,14 @@ Use color with discipline. Do not make the app colorful for the sake of it. The 
 
 TYPOGRAPHY DIRECTION
 Use a professional, modern sans-serif such as:
+
 - Inter
 - SF Pro
 - Manrope
 - Plus Jakarta Sans
 
 Typography should feel premium:
+
 - large numeric values
 - clean section headings
 - soft labels
@@ -59,6 +64,7 @@ Typography should feel premium:
 
 LAYOUT DIRECTION
 Design the app as a highly polished responsive web interface:
+
 - desktop first
 - tablet adaptable
 - mobile responsive
@@ -74,8 +80,9 @@ REQUIRED SCREENS
 Design the following screens in both wireframe and high-fidelity versions:
 
 1. LOGIN / SIGN IN SCREEN
-Goal: create a calm, secure, premium first impression
-Include:
+   Goal: create a calm, secure, premium first impression
+   Include:
+
 - email/username field
 - password field
 - remember me option
@@ -90,8 +97,9 @@ Include:
 This screen should feel minimal, premium, and polished. No generic login box in the center. Make it more editorial and visually interesting.
 
 2. DASHBOARD SCREEN
-Goal: provide instant financial overview
-Include:
+   Goal: provide instant financial overview
+   Include:
+
 - personalized greeting
 - total balance
 - total income
@@ -110,8 +118,9 @@ Include:
 The dashboard must be the most impressive screen in the app.
 
 3. INCOME MANAGEMENT SCREEN
-Goal: manage income with clarity and speed
-Include:
+   Goal: manage income with clarity and speed
+   Include:
+
 - add income form
 - income list/table/cards
 - delete action
@@ -123,8 +132,9 @@ Include:
 - subtle total income summary
 
 4. EXPENSE MANAGEMENT SCREEN
-Goal: manage expenses beautifully and clearly
-Include:
+   Goal: manage expenses beautifully and clearly
+   Include:
+
 - add expense form
 - expense list/table/cards
 - delete action
@@ -138,8 +148,9 @@ Include:
 - visual cues for high spending categories
 
 5. REPORTS / HISTORY SCREEN
-Goal: provide a polished analytical overview
-Include:
+   Goal: provide a polished analytical overview
+   Include:
+
 - all financial records
 - monthly summary cards
 - charts and graphs
@@ -151,7 +162,8 @@ Include:
 - clean analytical composition
 
 6. OPTIONAL PROFILE / SETTINGS SCREEN
-Include:
+   Include:
+
 - profile photo upload
 - name and email
 - password/security settings
@@ -162,6 +174,7 @@ Include:
 
 OPTIONAL EXTRAS TO MAKE THE PRODUCT FEEL MORE REAL
 If possible, include:
+
 - budget planner
 - savings goal cards
 - recurring transactions
@@ -173,6 +186,7 @@ If possible, include:
 
 DESIGN SYSTEM REQUIREMENTS
 Create a cohesive design system with reusable components:
+
 - primary button
 - secondary button
 - danger button
@@ -198,6 +212,7 @@ Make every component consistent, refined, and reusable.
 CHART DESIGN REQUIREMENTS
 Charts should not feel like generic default chart placeholders.
 Design them with strong visual style:
+
 - clean axis labels
 - subtle gridlines
 - elegant legends
@@ -209,6 +224,7 @@ Design them with strong visual style:
 
 VISUAL POLISH REQUIREMENTS
 To avoid the AI-generated look, prioritize:
+
 - asymmetrical balance where appropriate
 - varied card proportions
 - realistic content density
@@ -223,6 +239,7 @@ The app should look handcrafted, not auto-generated.
 
 HCI / UX REQUIREMENTS
 Clearly support these principles:
+
 - usability
 - learnability
 - memorability
@@ -234,6 +251,7 @@ Clearly support these principles:
 - error prevention
 
 Show these through the design:
+
 - clear button hierarchy
 - visible focus states
 - hover states
@@ -247,6 +265,7 @@ Show these through the design:
 
 PROTOTYPE FLOW REQUIREMENTS
 Set up clickable connections between:
+
 - login → dashboard
 - dashboard → income
 - dashboard → expense
@@ -259,17 +278,20 @@ Set up clickable connections between:
 RESPONSIVE BEHAVIOR
 Provide desktop, tablet, and mobile versions:
 Desktop:
+
 - richer layout
 - side navigation
 - larger charts
 - multi-column structure
 
 Tablet:
+
 - simplified columns
 - preserved hierarchy
 - no cramped content
 
 Mobile:
+
 - stacked layout
 - collapsible navigation
 - thumb-friendly buttons
@@ -279,6 +301,7 @@ Mobile:
 CONTENT STRATEGY
 Use realistic, believable content so the app feels real:
 Income examples:
+
 - Salary
 - Freelance Work
 - Side Project
@@ -286,6 +309,7 @@ Income examples:
 - Bonus
 
 Expense examples:
+
 - Rent
 - Groceries
 - Transport
@@ -301,6 +325,7 @@ DO NOT MAKE IT LOOK AI GENERATED
 This is extremely important.
 The app must look like it was designed by a highly skilled human designer.
 To achieve that:
+
 - do not overuse gradients
 - do not use repetitive component spacing everywhere
 - do not use bland default dashboard layouts
@@ -316,6 +341,7 @@ Instead, make it feel editorial, premium, and thoughtfully composed.
 
 FINAL OUTPUT EXPECTATION
 Deliver a complete Figma project that includes:
+
 - low-fidelity wireframes for required screens
 - polished high-fidelity UI for all screens
 - consistent design system

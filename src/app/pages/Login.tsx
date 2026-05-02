@@ -1,18 +1,17 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { useForm } from 'react-hook-form';
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
 import {
   Wallet,
   Eye,
   EyeOff,
-  TrendingUp,
   Shield,
-  BarChart3,
   Zap,
+  AlertCircle,
   ArrowRight,
   CheckCircle2,
-  AlertCircle,
-} from 'lucide-react';
+  TrendingUp,
+} from "lucide-react";
 
 interface LoginForm {
   email: string;
@@ -20,241 +19,378 @@ interface LoginForm {
   rememberMe: boolean;
 }
 
-const FEATURES = [
-  { icon: BarChart3, title: 'Real-time Analytics', desc: 'Visualize spending patterns with beautiful, interactive charts' },
-  { icon: Shield, title: 'Bank-level Security', desc: 'Your financial data is encrypted and fully protected at all times' },
-  { icon: Zap, title: 'Smart Insights', desc: 'AI-powered suggestions to help you save more every month' },
-  { icon: TrendingUp, title: 'Goal Tracking', desc: 'Set financial goals and watch your progress grow over time' },
+const BENEFITS = [
+  {
+    icon: TrendingUp,
+    title: "Faster money oversight",
+    desc: "Access budgets, income, and expenses from one secure dashboard.",
+  },
+  {
+    icon: Shield,
+    title: "Protected every session",
+    desc: "Bank-grade encryption and privacy-first sign-in reassurance.",
+  },
+  {
+    icon: Zap,
+    title: "Instant demo mode",
+    desc: "Try the product immediately without waiting for setup.",
+  },
 ];
 
 export function Login() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [loginError, setLoginError] = useState('');
+  const [loginError, setLoginError] = useState("");
+  const [capsLockOn, setCapsLockOn] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<LoginForm>({
-    defaultValues: { email: 'alex@example.com', password: '', rememberMe: false },
+    mode: "onTouched",
+    reValidateMode: "onChange",
+    defaultValues: {
+      email: "alex@example.com",
+      password: "",
+      rememberMe: false,
+    },
   });
 
   const onSubmit = async (data: LoginForm) => {
-    setLoginError('');
+    setLoginError("");
     setIsLoading(true);
-    // Simulate API call
-    await new Promise(r => setTimeout(r, 1400));
+    await new Promise((resolve) => setTimeout(resolve, 1200));
     setIsLoading(false);
 
-    if (data.email === 'wrong@test.com') {
-      setLoginError('Invalid email or password. Please check your credentials and try again.');
+    if (data.email === "wrong@test.com") {
+      setLoginError(
+        "Invalid email or password. Please check your credentials and try again.",
+      );
       return;
     }
-    navigate('/');
+
+    navigate("/");
   };
 
   return (
-    <div className="min-h-screen flex bg-background">
-      {/* Left panel — branding */}
-      <div className="hidden lg:flex flex-col justify-between w-[48%] p-14 relative overflow-hidden bg-primary text-primary-foreground">
-        {/* Modern ambient glows */}
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none opacity-40 mix-blend-screen bg-[radial-gradient(circle,rgba(45,212,191,0.25)_0%,transparent_70%)] translate-x-[-20%] translate-y-[-20%]" />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-30 mix-blend-screen bg-[radial-gradient(circle,rgba(129,140,248,0.25)_0%,transparent_70%)] translate-x-[20%] translate-y-[20%]" />
-
-        {/* Top: Logo */}
-        <div className="flex items-center gap-3 relative z-10">
-          <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-gradient-to-br from-indigo-500 to-teal-500 shadow-lg shadow-teal-500/20">
-            <Wallet size={22} className="text-white" />
-          </div>
-          <div>
-            <p className="text-lg font-bold tracking-tight leading-tight">SpendSmart</p>
-            <p className="text-xs text-primary-foreground/70 font-medium">Finance Manager</p>
-          </div>
-        </div>
-
-        {/* Middle: Hero content */}
-        <div className="relative z-10 space-y-12 max-w-lg mt-8">
-          <div>
-            <h1 className="text-4xl xl:text-5xl font-bold leading-[1.15] tracking-tight mb-6">
-              Take control of your <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-indigo-400">
-                financial future
-              </span>
-            </h1>
-            <p className="text-base text-primary-foreground/80 leading-relaxed max-w-md">
-              Track income, manage expenses, and gain clarity on your spending habits — all in one elegant, premium dashboard.
-            </p>
-          </div>
-
-          <div className="space-y-6">
-            {FEATURES.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-white/10 backdrop-blur-sm border border-white/10">
-                  <Icon size={18} className="text-teal-400" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold mb-1 tracking-tight">{title}</p>
-                  <p className="text-sm text-primary-foreground/70 leading-relaxed">{desc}</p>
-                </div>
+    <div className="min-h-screen overflow-hidden bg-slate-950 text-slate-50">
+      <div className="grid min-h-screen lg:grid-cols-[1.45fr_1fr]">
+        <section className="relative hidden overflow-hidden border-r border-slate-800/80 bg-slate-900/95 p-10 lg:flex lg:flex-col lg:justify-between">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.18),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(129,140,248,0.14),transparent_24%)]" />
+          <div className="relative z-10 space-y-10">
+            <div className="flex items-center gap-3 rounded-3xl bg-slate-950/70 px-4 py-3 ring-1 ring-white/10 shadow-sm shadow-slate-950/20">
+              <div className="flex h-12 w-12 items-center justify-center rounded-3xl bg-sky-400/10 text-sky-300 ring-1 ring-slate-800">
+                <Wallet size={22} />
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom: Stats bar */}
-        <div className="relative z-10 flex gap-10 mt-12 pt-8 border-t border-white/10">
-          {[
-            { value: '12,400+', label: 'Active users' },
-            { value: '$2.8M+', label: 'Tracked monthly' },
-            { value: '4.9★', label: 'User rating' },
-          ].map(({ value, label }) => (
-            <div key={label}>
-              <p className="text-2xl font-bold tracking-tight mb-1">{value}</p>
-              <p className="text-xs text-primary-foreground/60 font-medium uppercase tracking-wider">{label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Right panel — form */}
-      <div className="flex-1 flex items-center justify-center p-6 sm:p-12">
-        <div className="w-full max-w-[440px] space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          {/* Mobile logo */}
-          <div className="flex items-center gap-3 lg:hidden mb-12">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-gradient-to-br from-primary to-secondary shadow-md">
-              <Wallet size={18} className="text-white" />
-            </div>
-            <p className="text-xl font-bold text-foreground">SpendSmart</p>
-          </div>
-
-          {/* Header */}
-          <div className="space-y-2">
-            <h2 className="text-3xl font-bold text-foreground tracking-tight">Welcome back</h2>
-            <p className="text-muted-foreground">Enter your credentials to access your account</p>
-          </div>
-
-          {/* Error alert */}
-          {loginError && (
-            <div className="flex items-start gap-3 p-4 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive animate-in fade-in zoom-in-95 duration-300">
-              <AlertCircle size={18} className="shrink-0 mt-0.5" />
-              <p className="text-sm font-medium leading-relaxed">{loginError}</p>
-            </div>
-          )}
-
-          {/* Form */}
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5" noValidate>
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-semibold text-foreground block">
-                Email address
-              </label>
-              <div className="relative">
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  {...register('email', {
-                    required: 'Email is required',
-                    pattern: { value: /^\S+@\S+\.\S+$/, message: 'Enter a valid email address' },
-                  })}
-                  className={`w-full px-4 py-3.5 rounded-xl border bg-card text-card-foreground outline-none transition-all placeholder:text-muted-foreground/60 focus:ring-2 focus:ring-ring/20 focus:border-ring ${
-                    errors.email ? 'border-destructive focus:border-destructive focus:ring-destructive/20' : 'border-border'
-                  }`}
-                />
-              </div>
-              {errors.email && (
-                <p className="text-xs text-destructive font-medium flex items-center gap-1.5 mt-1 animate-in slide-in-from-top-1">
-                  <AlertCircle size={12} /> {errors.email.message}
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">
+                  SpendSmart
                 </p>
-              )}
+                <p className="text-xs text-slate-400">
+                  Premium expense intelligence
+                </p>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="text-sm font-semibold text-foreground block">
-                  Password
-                </label>
-                <button type="button" className="text-sm font-semibold text-secondary hover:text-secondary/80 transition-colors">
-                  Forgot password?
-                </button>
+            <div className="max-w-xl space-y-6">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">
+                  Welcome back
+                </p>
+                <h1 className="mt-4 max-w-2xl text-4xl font-semibold leading-tight text-white sm:text-5xl">
+                  Smart, secure access for your everyday finance flow.
+                </h1>
               </div>
-              <div className="relative">
-                <input
-                  id="password"
-                  type={showPassword ? 'text' : 'password'}
-                  placeholder="Enter your password"
-                  {...register('password', {
-                    required: 'Password is required',
-                    minLength: { value: 6, message: 'Password must be at least 6 characters' },
-                  })}
-                  className={`w-full px-4 py-3.5 pr-12 rounded-xl border bg-card text-card-foreground outline-none transition-all placeholder:text-muted-foreground/60 focus:ring-2 focus:ring-ring/20 focus:border-ring ${
-                    errors.password ? 'border-destructive focus:border-destructive focus:ring-destructive/20' : 'border-border'
-                  }`}
-                />
+              <p className="max-w-xl text-base leading-7 text-slate-300/95">
+                Sign in quickly with confidence, stay in control of every
+                transaction, and keep your money goals moving forward.
+              </p>
+
+              <div className="space-y-4">
+                {BENEFITS.map((item) => (
+                  <div
+                    key={item.title}
+                    className="flex items-start gap-4 rounded-3xl border border-slate-800/80 bg-slate-950/80 p-4"
+                  >
+                    <div className="mt-1 flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-800 text-sky-300 ring-1 ring-slate-700">
+                      <item.icon size={18} />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">{item.title}</p>
+                      <p className="mt-1 text-sm text-slate-400">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="relative z-10 grid gap-4 rounded-[2rem] border border-slate-800/80 bg-slate-950/85 p-6 shadow-2xl shadow-slate-950/20">
+            <div className="flex items-center gap-3 text-slate-200">
+              <Shield size={18} className="text-sky-300" />
+              <p className="text-sm leading-6">
+                Bank-grade security and privacy-first protection on every login.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-3">
+              {[
+                { value: "98%", label: "Satisfaction" },
+                { value: "AES-256", label: "Encryption" },
+                { value: "Instant", label: "Access" },
+              ].map((badge) => (
+                <div
+                  key={badge.label}
+                  className="rounded-3xl bg-slate-900/80 p-4 text-center ring-1 ring-slate-700/70"
+                >
+                  <p className="text-xl font-semibold text-white">
+                    {badge.value}
+                  </p>
+                  <p className="mt-2 text-xs uppercase tracking-[0.24em] text-slate-400">
+                    {badge.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <main className="flex items-center justify-center px-6 py-10 sm:px-10 lg:px-12">
+          <div className="w-full max-w-2xl">
+            <div className="rounded-[2rem] border border-slate-800/80 bg-slate-950/95 p-8 shadow-2xl shadow-slate-950/30 backdrop-blur-xl sm:p-10">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-slate-100">
+                  <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-sky-500/10 text-sky-300 ring-1 ring-slate-800">
+                    <Wallet size={24} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold uppercase tracking-[0.28em] text-sky-300">
+                      Secure login
+                    </p>
+                    <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                      Access your SpendSmart workspace.
+                    </h2>
+                  </div>
+                </div>
+
+                <p className="text-base leading-7 text-slate-300">
+                  Enter your details to continue. Your session is protected by
+                  encryption and smart authentication.
+                </p>
+              </div>
+
+              {loginError && (
+                <div
+                  className="mt-8 rounded-3xl border border-rose-500/20 bg-rose-500/10 p-5 text-rose-100"
+                  role="alert"
+                  aria-live="assertive"
+                >
+                  <div className="flex items-center gap-3">
+                    <AlertCircle size={18} className="text-rose-300" />
+                    <p className="font-semibold">Sign in failed</p>
+                  </div>
+                  <p className="mt-2 text-sm leading-6">{loginError}</p>
+                </div>
+              )}
+
+              <form
+                onSubmit={handleSubmit(onSubmit)}
+                className="mt-8 space-y-6"
+                noValidate
+              >
+                <div className="space-y-3">
+                  <label
+                    htmlFor="email"
+                    className="text-sm font-semibold text-slate-200 block"
+                  >
+                    Email address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    autoFocus
+                    placeholder="name@example.com"
+                    {...register("email", {
+                      required: "Enter your email address",
+                      pattern: {
+                        value: /^\S+@\S+\.\S+$/,
+                        message: "Enter a valid email address",
+                      },
+                    })}
+                    className={`w-full rounded-3xl border px-4 py-4 text-slate-50 bg-slate-950/90 outline-none transition-all placeholder:text-slate-500 focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20 ${
+                      errors.email
+                        ? "border-rose-500/50 focus:border-rose-400 focus:ring-rose-500/20"
+                        : "border-slate-800"
+                    }`}
+                    aria-invalid={errors.email ? "true" : "false"}
+                    aria-describedby={errors.email ? "email-error" : undefined}
+                  />
+                  {errors.email && (
+                    <p id="email-error" className="text-sm text-rose-300">
+                      {errors.email.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="password"
+                      className="text-sm font-semibold text-slate-200 block"
+                    >
+                      Password
+                    </label>
+                    <button
+                      type="button"
+                      className="text-sm font-semibold text-slate-300 hover:text-white"
+                    >
+                      Forgot password?
+                    </button>
+                  </div>
+                  <div className="relative">
+                    <input
+                      id="password"
+                      type={showPassword ? "text" : "password"}
+                      autoComplete="current-password"
+                      placeholder="Enter your password"
+                      {...register("password", {
+                        required: "Enter your password",
+                        minLength: {
+                          value: 6,
+                          message: "Password must be at least 6 characters",
+                        },
+                      })}
+                      onKeyUp={(event) =>
+                        setCapsLockOn(event.getModifierState("CapsLock"))
+                      }
+                      className={`w-full rounded-3xl border px-4 py-4 pr-12 text-slate-50 bg-slate-950/90 outline-none transition-all placeholder:text-slate-500 focus:border-sky-400 focus:ring-2 focus:ring-sky-500/20 ${
+                        errors.password
+                          ? "border-rose-500/50 focus:border-rose-400 focus:ring-rose-500/20"
+                          : "border-slate-800"
+                      }`}
+                      aria-invalid={errors.password ? "true" : "false"}
+                      aria-describedby={
+                        errors.password
+                          ? "password-error"
+                          : capsLockOn
+                            ? "capslock-warning"
+                            : undefined
+                      }
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-100 transition-colors"
+                      aria-label={
+                        showPassword ? "Hide password" : "Show password"
+                      }
+                    >
+                      {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                    </button>
+                  </div>
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                    {errors.password ? (
+                      <p id="password-error" className="text-sm text-rose-300">
+                        {errors.password.message}
+                      </p>
+                    ) : (
+                      <p className="text-sm text-slate-400">
+                        Password must contain at least 6 characters.
+                      </p>
+                    )}
+                    {capsLockOn && !errors.password && (
+                      <p
+                        id="capslock-warning"
+                        className="text-sm text-amber-300"
+                      >
+                        Caps lock is on.
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <label className="inline-flex items-center gap-3 text-sm text-slate-200">
+                    <input
+                      type="checkbox"
+                      {...register("rememberMe")}
+                      className="h-5 w-5 rounded-lg border border-slate-700 bg-slate-950 text-sky-500 focus:ring-sky-400"
+                    />
+                    <span className="font-medium">Remember me for 30 days</span>
+                  </label>
+                  <p className="text-sm text-slate-400">
+                    Secure session for trusted devices.
+                  </p>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isLoading || !isValid}
+                  className="flex w-full items-center justify-center gap-3 rounded-3xl bg-sky-500 px-5 py-4 text-base font-semibold text-white shadow-xl shadow-sky-500/20 transition duration-200 hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-300"
+                >
+                  {isLoading ? (
+                    <>
+                      <span className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                      Signing in...
+                    </>
+                  ) : (
+                    <>
+                      <span>Sign in</span>
+                      <ArrowRight size={18} />
+                    </>
+                  )}
+                </button>
+              </form>
+
+              <div className="mt-6 rounded-3xl border border-slate-800/80 bg-slate-900/80 p-5">
+                <div className="flex items-center gap-3 text-slate-300">
+                  <CheckCircle2 size={18} className="text-sky-300" />
+                  <p className="text-sm leading-6">
+                    Prefer to explore first? Continue as a demo and preview the
+                    dashboard instantly.
+                  </p>
+                </div>
                 <button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => navigate("/")}
+                  className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-3xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm font-semibold text-slate-100 transition hover:border-slate-500 hover:bg-slate-900"
                 >
-                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  Continue as demo
                 </button>
               </div>
-              {errors.password && (
-                <p className="text-xs text-destructive font-medium flex items-center gap-1.5 mt-1 animate-in slide-in-from-top-1">
-                  <AlertCircle size={12} /> {errors.password.message}
-                </p>
-              )}
-            </div>
 
-            <div className="flex items-center gap-3 pt-1">
-              <div className="flex items-center h-5">
-                <input
-                  id="remember"
-                  type="checkbox"
-                  {...register('rememberMe')}
-                  className="w-4.5 h-4.5 rounded border-border text-secondary focus:ring-secondary/30 transition-all cursor-pointer"
-                />
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-3xl border border-slate-800/80 bg-slate-900/80 p-4">
+                  <p className="text-sm font-semibold text-slate-100">
+                    Secure by default
+                  </p>
+                  <p className="mt-2 text-sm text-slate-400 leading-6">
+                    Every login is protected by encrypted transport and trusted
+                    session controls.
+                  </p>
+                </div>
+                <div className="rounded-3xl border border-slate-800/80 bg-slate-900/80 p-4">
+                  <p className="text-sm font-semibold text-slate-100">
+                    Privacy assured
+                  </p>
+                  <p className="mt-2 text-sm text-slate-400 leading-6">
+                    We never share your credentials and your details stay
+                    private in your browser.
+                  </p>
+                </div>
               </div>
-              <label htmlFor="remember" className="text-sm text-muted-foreground font-medium cursor-pointer select-none">
-                Remember me for 30 days
-              </label>
+
+              <div className="mt-8 border-t border-slate-800/80 pt-5 text-center text-sm text-slate-400">
+                Don&apos;t have an account?{" "}
+                <button className="font-semibold text-slate-100 hover:text-white transition-colors">
+                  Create one free
+                </button>
+              </div>
             </div>
-
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="w-full flex items-center justify-center gap-2.5 py-4 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all hover:bg-primary/90 active:scale-[0.98] disabled:opacity-80 disabled:cursor-not-allowed disabled:hover:bg-primary disabled:active:scale-100 shadow-xl shadow-primary/10 mt-2"
-            >
-              {isLoading ? (
-                <>
-                  <div className="w-5 h-5 rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground animate-spin" />
-                  <span>Signing in...</span>
-                </>
-              ) : (
-                <>
-                  <span>Sign In</span>
-                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </>
-              )}
-            </button>
-          </form>
-
-          {/* Demo hint */}
-          <div className="flex items-start gap-3 p-4 rounded-xl bg-secondary/10 border border-secondary/20">
-            <CheckCircle2 size={18} className="text-secondary shrink-0 mt-0.5" />
-            <p className="text-sm text-secondary-foreground font-medium leading-relaxed">
-              <span className="font-bold">Demo mode:</span> Enter any email and password (min 6 chars) to explore the app.
-            </p>
           </div>
-
-          <p className="text-center text-sm font-medium text-muted-foreground pt-4">
-            Don't have an account?{' '}
-            <button className="text-secondary font-bold hover:underline underline-offset-4 transition-all">
-              Create one free
-            </button>
-          </p>
-        </div>
+        </main>
       </div>
     </div>
   );
