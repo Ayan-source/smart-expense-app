@@ -1,4 +1,4 @@
-# Smart Expense App
+# SpendSmart
 
 Smart Expense App is a modern, responsive personal finance dashboard built with React and Vite. The app is branded internally as `SpendSmart` and provides an interactive finance workspace for tracking income, expenses, and monthly trends.
 
