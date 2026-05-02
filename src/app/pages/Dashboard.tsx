@@ -199,10 +199,7 @@ export function Dashboard() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-5">
         <div>
           <h1 className="text-3xl font-bold text-foreground tracking-tight mb-1">
-            Good morning, Alex{" "}
-            <span className="animate-wave inline-block origin-[70%_70%]">
-              👋
-            </span>
+            Good morning, Alex
           </h1>
           <p className="text-[15px] text-muted-foreground font-medium">
             Here's a summary of your finances for May 2026.
